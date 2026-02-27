@@ -1,0 +1,14 @@
+{
+    "targetAssemblies": [
+        "Assembly-CSharp"
+    ],
+    "symbolManglingEnabled": false,
+    "stringRewritingEnabled": false,
+    "customAttrRewritingEnabled": false,
+    "fieldEncodingEnabled": false,
+    "fieldEncodingSeed": 0,
+    "structEntropyEnabled": false,
+    "cfgGenerationEnabled": false,
+    "cgGenerationEnabled": false,
+    "cfgMode": 0
+}
