@@ -74,7 +74,7 @@ public partial struct BlockHitSystem : ISystem
     {
         public NativeList<Entity> DamagedByEntity;
 
-        private void Execute(ref BlockData blockData, HitByLaserEvent hitByLaserEvent)
+        private void Execute(ref BlockData blockData, in HitByLaserEvent hitByLaserEvent)
         {
             if (blockData.Type != BlockTypes.Gold)
                 blockData.Health--;

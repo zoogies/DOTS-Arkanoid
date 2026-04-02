@@ -44,9 +44,10 @@ public partial struct PowerUpTriggeringSystem : ISystem
 
             if (paddleEntity != Entity.Null && powerUpEntity != Entity.Null)
             {
-                PowerUpReceivedEventLookup[paddleEntity] = new PowerUpReceivedEvent {
-                    PowerUp = powerUpEntity, Type = PowerUpDataLookup[powerUpEntity].Type
-                };
+                var powerUpReceivedEvent = PowerUpReceivedEventLookup[paddleEntity];
+                powerUpReceivedEvent.PowerUp = powerUpEntity;
+                powerUpReceivedEvent.Type = PowerUpDataLookup[powerUpEntity].Type;
+                PowerUpReceivedEventLookup[paddleEntity] = powerUpReceivedEvent;
                 PowerUpReceivedEventLookup.SetComponentEnabled(paddleEntity, true);
             }
         }

@@ -75,8 +75,10 @@ public partial struct BallCollisionResolvingSystem : ISystem
                 for (int i = 0; i < ColliderCastHits.Length; i++)
                 {
                     var hit = ColliderCastHits[i];
-                    
-                    HitByBallEventLookup[hit.Entity] = new HitByBallEvent { Ball = ball };
+
+                    var hitByBallEvent = HitByBallEventLookup[hit.Entity];
+                    hitByBallEvent.Ball = ball;
+                    HitByBallEventLookup[hit.Entity] = hitByBallEvent;
                     HitByBallEventLookup.SetComponentEnabled(hit.Entity, true);
                     
                     ballHitEvents.Add(new BallHitEvent { HitEntity = hit.Entity });

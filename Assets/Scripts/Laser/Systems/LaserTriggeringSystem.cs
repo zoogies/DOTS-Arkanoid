@@ -38,13 +38,17 @@ public partial struct LaserTriggeringSystem : ISystem
 
             if (LaserShots.HasComponent(entityA))
             {
-                HitByLaserEventLookup[entityB] = new HitByLaserEvent { LaserShot = entityA };
+                var hitByLaserEvent = HitByLaserEventLookup[entityB];
+                hitByLaserEvent.LaserShot = entityA;
+                HitByLaserEventLookup[entityB] = hitByLaserEvent;
                 HitByLaserEventLookup.SetComponentEnabled(entityB, true);
             }
 
             if (LaserShots.HasComponent(entityB))
             {
-                HitByLaserEventLookup[entityA] = new HitByLaserEvent { LaserShot = entityB };
+                var hitByLaserEvent = HitByLaserEventLookup[entityA];
+                hitByLaserEvent.LaserShot = entityB;
+                HitByLaserEventLookup[entityA] = hitByLaserEvent;
                 HitByLaserEventLookup.SetComponentEnabled(entityA, true);
             }
         }
