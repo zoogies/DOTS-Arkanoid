@@ -73,7 +73,7 @@ public partial struct GameStartSystem : ISystem, ISystemStartStop
         {
             var ecb = new EntityCommandBuffer(Allocator.TempJob);
             
-            foreach (var (playerData, player) in SystemAPI.Query<RefRO<PlayerData>>().WithEntityAccess())
+            foreach (var (playerData, _, player) in SystemAPI.Query<RefRO<PlayerData>, RefRO<PlayerIndex>>().WithEntityAccess())
             {
                 if (playerData.ValueRO.Lives != 0)
                     ecb.AddSingleFrameComponent(new PaddleSpawnRequest { OwnerPlayer = player });

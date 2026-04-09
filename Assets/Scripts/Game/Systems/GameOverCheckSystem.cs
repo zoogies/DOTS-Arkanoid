@@ -16,7 +16,7 @@ public partial struct GameOverCheckSystem : ISystem
     {
         bool anyAlive = false;
         
-        foreach (var playerData in SystemAPI.Query<RefRO<PlayerData>>()) 
+        foreach (var (playerData, _) in SystemAPI.Query<RefRO<PlayerData>, RefRO<PlayerIndex>>()) 
             anyAlive |= playerData.ValueRO.Lives != 0;
 
         if (!anyAlive)

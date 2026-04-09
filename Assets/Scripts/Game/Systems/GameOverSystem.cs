@@ -18,7 +18,7 @@ public partial struct GameOverSystem : ISystem, ISystemStartStop
     public void OnStartRunning(ref SystemState state)
     {
         int highScore = 0;
-        foreach (var playerData in SystemAPI.Query<RefRO<PlayerData>>()) 
+        foreach (var (playerData, _) in SystemAPI.Query<RefRO<PlayerData>, RefRO<PlayerIndex>>()) 
             highScore = math.max(highScore, playerData.ValueRO.Score);
         
         var gameData = SystemAPI.GetSingleton<GameData>();
